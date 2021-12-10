@@ -53,6 +53,7 @@ export default function Send(props) {
         disabled={props.text === ""}
         onClick={dataPush}
         variant="contained"
+        color="primary"
       >
         送信
       </Button>
@@ -68,6 +69,7 @@ export default function Send(props) {
         disabled={!checkBoxBool}
         onClick={dataReset}
         variant="contained"
+        color="primary"
       >
         生産数リセット
       </Button>

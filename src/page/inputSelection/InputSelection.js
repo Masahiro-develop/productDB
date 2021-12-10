@@ -28,6 +28,7 @@ export default function InputSelection() {
             <Button
               className={classes.button}
               variant="contained"
+              color="primary"
               component={Link}
               to="/input/productA"
             >
@@ -36,6 +37,7 @@ export default function InputSelection() {
             <Button
               className={classes.button}
               variant="contained"
+              color="primary"
               component={Link}
               to="/input/productB"
             >
@@ -44,6 +46,7 @@ export default function InputSelection() {
             <Button
               className={classes.button}
               variant="contained"
+              color="primary"
               component={Link}
               to="/input/productC"
             >
