@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Top from "./page/top/Top";
@@ -34,12 +34,12 @@ function Auth({ children }) {
 function App() {
   return (
     <ThemeProvider theme={mainTheme}>
-      <HashRouter>
+      
+      <BrowserRouter>
         
         {/* ログイン画面 */}
           
         <AuthProvider>
-          <Header />
           <Switch>
 
             <Route path="/login">
@@ -50,46 +50,58 @@ function App() {
 
             <Auth>
 
-            {/* ホーム画面 */}
-            <Route exact path="/">
-              <Top />
-            </Route>
+              {/* ホーム画面 */}
+              <Route exact path="/">
+                <Header />
+                <Top />
+                <Footer />
+              </Route>
           
+              {/* 入力選択画面 */}
+              <Route exact path="/input">
+                <Header />
+                <InputSelection />
+                <Footer />
+              </Route>
   
-            {/* 入力選択画面 */}
-            <Route exact path="/input">
-              <InputSelection />
-            </Route>
+              {/* 計算結果表示画面 */}
+              <Route path="/results">
+                <Header />
+                <Results />
+                <Footer />
+              </Route>
   
-            {/* 計算結果表示画面 */}
-            <Route path="/results">
-              <Results />
-            </Route>
-  
-            {/* 各種出力画面 */}
-            <Route path="/output">
-              <Output />
-            </Route>
+              {/* 各種出力画面 */}
+              <Route path="/output">
+                <Header />
+                <Output />
+                <Footer />
+              </Route>
 
-            {/* 各製品入力画面 */}
-            <Route path="/input/productA">
-              <ProductA />
-            </Route>
-            <Route path="/input/productB">
-              <ProductB />
-            </Route>
-            <Route path="/input/productC">
-              <ProductC />
-            </Route>
+              {/* 各製品入力画面 */}
+              <Route path="/input/productA">
+                <Header />
+                <ProductA />
+                <Footer />
+              </Route>
+              <Route path="/input/productB">
+                <Header />
+                <ProductB />
+                <Footer />
+              </Route>
+              <Route path="/input/productC">
+                <Header />
+                <ProductC />
+                <Footer />
+              </Route>
 
             </Auth>
-            
+
           </Switch>
-          <Footer />
         </AuthProvider>
         
+      </BrowserRouter>
 
-      </HashRouter>
     </ThemeProvider>
   );
 }

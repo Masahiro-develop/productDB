@@ -26,17 +26,14 @@ export default function Top() {
   const classes = useStyles();
   return (
     <Box className={classes.outer} m={2}>
-      <Button className={classes.button} variant="contained" component={Link} to="/input">
+      <Button className={classes.button} color="primary" variant="contained" component={Link} to="/input">
         生産入力
       </Button>
-      <Button className={classes.button} variant="contained" component={Link} to="/results">
+      <Button className={classes.button} color="primary" variant="contained" component={Link} to="/results">
         計算結果表示
       </Button>
-      <Button className={classes.button} variant="contained" component={Link} to="/output">
+      <Button className={classes.button} color="primary" variant="contained" component={Link} to="/output">
         各種出力
-      </Button>
-      <Button className={classes.button} variant="contained">
-        その他設定
       </Button>
     </Box>
   );

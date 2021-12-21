@@ -42,7 +42,7 @@ export default function Header() {
         component={Link}
         to="/results"
       >
-        計算結果
+        生産数出力
       </Button>
       <Button
         className={classes.button}
@@ -50,7 +50,7 @@ export default function Header() {
         component={Link}
         to="/output"
       >
-        各種出力
+        月間生産数
       </Button>
     </Box>
   );

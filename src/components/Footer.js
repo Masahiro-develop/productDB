@@ -1,5 +1,7 @@
 import React from "react";
 import { Box, makeStyles } from "@material-ui/core";
+import { getAuth, signOut } from "@firebase/auth";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   footer: {
@@ -15,13 +17,26 @@ const useStyles = makeStyles({
   footerInner: {
     fontSize: "1.5rem"
   },
+  button: {
+    marginLeft: "10px",
+    fontSize: "1.5rem"
+  }
 });
 
 const Footer = () => {
   const classes = useStyles();
+
+  const history = useHistory();
+  function logOut() {
+    const auth = getAuth();
+    signOut(auth);
+    history.push("/login");
+}
+
     return (
       <Box className={classes.footer} display="flex" alignItems="center" justifyContent="center">
         <Box className={classes.footerInner}>©︎ 2021 Masahiro Hayashi</Box>
+        <button className={classes.button} onClick={logOut}>ログアウト</button>
       </Box>
   );
 };

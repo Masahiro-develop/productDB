@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 export default function Results() {
     const classes = useStyles();
     
-    const header1 = ["設備名","計画数", "生産数", "生産累計", "計画差異"];
+    const header1 = ["設備名", "計画数", "計画累計", "生産数", "生産累計", "計画差異"];
     
     const [data1, setData1] = useState([]);
     
@@ -35,7 +35,7 @@ export default function Results() {
     const date = new Date();
     const yyyy = date.getFullYear();
     const mm = ("0" + (date.getMonth() + 1)).slice(-2);
-    const dd = ("0" + date.getDate()).toLocaleString({timeZone: "Europe/Berlin"}).slice(-2);
+    const dd = ("0" + date.getDate()).slice(-2);
     
     const [day, setDay] = useState(yyyy + "-" + mm + "-" + dd);
     
@@ -91,23 +91,28 @@ export default function Results() {
                     
                     keys.forEach(async(key) => {
                         
-                        const totalArray = [0];
-                        const totalPlanArray = [0];
+                        var totalArray = [0];
+                        var totalPlanArray = [0];
                         
                         if (gotTotalValues != null) {
                             const days = Object.keys(gotTotalValues);
-                            days.forEach(day => {
-                                const values = gotTotalValues[day];
-                                if (values[key]) {
-                                    const productionNumber = values[key].生産数;
-                                    if (productionNumber) {
-                                        totalArray.push(Object.values(productionNumber)[0]);
+                            days.forEach(gotDay => {
+                                const days = day.substr(8, 2);
+                                if (days >= gotDay) {
+                                    const values = gotTotalValues[gotDay];
+                                    if (values[key]) {
+                                        const productionNumber = values[key].生産数;
+                                        if (productionNumber) {
+                                            const array = totalArray.concat(Object.values(productionNumber));
+                                            totalArray = array;
+                                        }
+                                        const planNumber = values[key].計画数;
+                                        if (planNumber) {
+                                            const array = totalPlanArray.concat(Object.values(planNumber));
+                                            totalPlanArray = array;
+                                        }
                                     }
-                                    const planNumber = values[key].計画数;
-                                    if (planNumber) {
-                                        totalPlanArray.push(Object.values(planNumber)[0]);
-                                    }
-                                } 
+                                }
                             });   
                         }
                         
@@ -128,6 +133,7 @@ export default function Results() {
                         array.push({
                             name: key,
                             計画数: comma(keikakusu),
+                            計画累計: comma(keikakuruikei),
                             生産数: comma(seisansu),
                             生産累計: comma(seisanruikei),
                             計画差異: comma(keikakusai),

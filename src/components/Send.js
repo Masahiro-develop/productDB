@@ -20,7 +20,6 @@ export default function Send(props) {
   };
 
   function dataPush() {
-    console.log(props.path);
     const res = props.text.replace(/[^0-9]/g, "");
     push(ref(database, props.path), res);
     props.setText("");
