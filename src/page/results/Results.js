@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 export default function Results() {
     const classes = useStyles();
     
-    const header1 = ["設備名", "計画数", "計画累計", "生産数", "生産累計", "計画差異"];
+    const header1 = ["製品名", "計画数", "計画累計", "生産数", "生産累計", "計画差異"];
     
     const [data1, setData1] = useState([]);
     
@@ -85,11 +85,11 @@ export default function Results() {
             onValue(messageRef, (snapshot) => {
                 const gotValues = snapshot.val()
                 
-                if (gotValues != null) {
+                if (gotValues) {
                     const array = [];
                     const keys = Object.keys(gotValues);
                     
-                    keys.forEach(async(key) => {
+                    keys.forEach(async (key) => {
                         
                         var totalArray = [0];
                         var totalPlanArray = [0];
