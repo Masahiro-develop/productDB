@@ -25,18 +25,6 @@ const firebaseConfig = {
   appId: REACT_APP_FIREBASE_APP_ID
 };
 
-
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBcpBpO1VMJWYvVU4sPI6lS4LUgE0YvwHA",
-//   authDomain: "production-management-project.firebaseapp.com",
-//   databaseURL: "https://production-management-project-default-rtdb.firebaseio.com",
-//   projectId: "production-management-project",
-//   storageBucket: "production-management-project.appspot.com",
-//   messagingSenderId: "394264435442",
-//   appId: "1:394264435442:web:9d5860652b636035b54e6b"
-// };
-
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const database = getDatabase(app);
